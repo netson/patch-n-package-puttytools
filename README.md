@@ -37,6 +37,9 @@ Usage: puttygen ( keyfile | -t type [ -b bits ] ) <strong>[ -N passphrase ]</str
         specify device to read entropy from (e.g. /dev/urandom)
 </pre>
 
+### What?
+This script was specifically created for my purposes; it's not very portable, only tested on Ubuntu LTS 16 & 18 and does a bunch more than just patching putty. It also builds the binaries, packages the binaries using FPM and adds them to my local reprepro repository. If you're just interested in the patch, take a look at the ```cmdgen.option-N.patch``` file, or strip whatever you don't need from the ```patch-n-package-puttytools.sh``` script to suit your needs. If you have any suggestions or improvements, please feel free to let me know! :-)
+
 ### Credits
 I used the information from this blog as a starting point: 
 https://itefix.net/content/puttygen-patch-entering-passphrases-command-line
