@@ -1,0 +1,37 @@
+--- cmdgen.c	2017-07-04 21:30:55.000000000 +0200
++++ cmdgen.c_new	2018-08-31 15:24:06.854459459 +0200
+@@ -137,7 +137,7 @@
+ void usage(int standalone)
+ {
+     fprintf(standalone ? stderr : stdout,
+-	    "Usage: puttygen ( keyfile | -t type [ -b bits ] )\n"
++	    "Usage: puttygen ( keyfile | -t type [ -b bits ] ) [ -N passphrase ]\n"
+ 	    "                [ -C comment ] [ -P ] [ -q ]\n"
+ 	    "                [ -o output-keyfile ] [ -O type | -l | -L"
+ 	    " | -p ]\n");
+@@ -161,6 +161,7 @@
+ 	   "  -C    change or specify key comment\n"
+ 	   "  -P    change key passphrase\n"
+ 	   "  -q    quiet: do not display progress bar\n"
++ 	   "  -N    new or existing passphrase\n"
+ 	   "  -O    specify output type:\n"
+ 	   "           private             output PuTTY private key format\n"
+ 	   "           private-openssh     export OpenSSH private key\n"
+@@ -406,6 +407,7 @@
+ 		  case 'C':
+ 		  case 'O':
+ 		  case 'o':
++ 		  case 'N':
+ 		    /*
+ 		     * Option requiring parameter.
+ 		     */
+@@ -468,6 +470,9 @@
+ 		      case 'o':
+ 			outfile = p;
+                         break;
++ 		      case 'N':
++ 			old_passphrase = strdup(p);
++ 			new_passphrase = strdup(p);
+ 		    }
+ 		    p = NULL;	       /* prevent continued processing */
+ 		    break;
