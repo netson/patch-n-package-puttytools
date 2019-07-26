@@ -1,6 +1,9 @@
 # Patch 'n Package puttytools
 Provides a patched version of puttygen which allows accepting passwords via cli arguments.
 
+### 2019-07-26 Update
+This patch will not be maintained since you can use the --old-passphrase <file> and --new-passphrase <file> command to achieve the same thing as of puttygen version 0.72.
+
 ### Why?
 I use Ansible to manage my server configurations and I'm writing a plugin which allows using KeePass as a store for secrets (instead of using Ansible Vault). This plugin also allows you to generate secrets on the fly, including SSH keys. Since some of my customers use windows systems/putty, I also wanted the plugin to be able to automatically convert SSH keys to the PuTTY format. However, since puttygen by default does not accept password entered on the command line, I needed a solution, which is this patch.
 
